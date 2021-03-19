@@ -5,6 +5,7 @@ export const mutations = {
     const response = await this.$dataApi.getHome()
 
     if (!response.ok) {
+      // eslint-disable-next-line
       console.error(response.status, response.statusText)
 
       this.$router.push({
@@ -17,7 +18,7 @@ export const mutations = {
       })
     } else {
       state = response.json
-      console.log(state)
+      // console.log(state)
     }
   }
 }
