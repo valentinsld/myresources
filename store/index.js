@@ -7,3 +7,5 @@ export const mutations = {
     state.counter++
   }
 }
+
+export const strict = false

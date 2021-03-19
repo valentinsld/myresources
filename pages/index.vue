@@ -29,26 +29,7 @@
 
 <script>
 export default {
-  name: 'Home',
-  mounted () {
-    this.$store.commit('header/getData')
-  }
-  /* async asyncData ({ $dataApi, isDev, route, store, env, params, query, req, res, redirect, error }) {
-    // console.log(this.$dataApi)
-    const response = await $dataApi.getHome()
-
-    if (!response.ok) {
-      return error(
-        {
-          statusCode: response.status,
-          message: response.status
-        }
-      )
-    }
-
-    // TODO add to store
-    console.log(response)
-  } */
+  name: 'Home'
 }
 </script>
 

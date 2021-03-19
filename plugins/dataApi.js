@@ -8,13 +8,35 @@ export default function (context, inject) {
   }
 
   inject('dataApi', {
-    getHome
+    getPage,
+    getHeader,
+    getFooter
   })
 
-  async function getHome () {
+  async function getPage (slug) {
     try {
       return unWrap(await fetch(
-        ENDPOINT, header
+        ENDPOINT + slug, header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  async function getHeader () {
+    try {
+      return unWrap(await fetch(
+        ENDPOINT + 'menus/menu-1-eng', header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  async function getFooter () {
+    try {
+      return unWrap(await fetch(
+        ENDPOINT + 'menus/footer', header
       ))
     } catch (error) {
       return getErrorResponse(error)

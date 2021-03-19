@@ -1,8 +1,20 @@
 <template>
   <div>
+    <Header />
     <Nuxt />
+    <Footer />
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Default',
+  beforeCreate () {
+    this.$store.commit('header/getData')
+    this.$store.commit('footer/getData')
+  }
+}
+</script>
 
 <style>
 html {

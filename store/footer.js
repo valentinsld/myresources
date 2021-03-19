@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const mutations = {
   async getData (state) {
-    const response = await this.$dataApi.getHeader()
+    const response = await this.$dataApi.getFooter()
 
     if (!response.ok) {
       // eslint-disable-next-line
