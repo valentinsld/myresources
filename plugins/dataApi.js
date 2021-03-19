@@ -1,8 +1,9 @@
 const ENDPOINT = 'http://myresources.local/wp-json/better-rest-endpoints/v1/'
 
 export default function (context, inject) {
-  const headers = {
-    aaa: 'aaa'
+  const header = {
+    method: 'GET',
+    headers: { 'Content-type': 'application/json;charset=UTF-8' }
   }
 
   inject('dataApi', {
@@ -12,7 +13,7 @@ export default function (context, inject) {
   async function getHome () {
     try {
       return unWrap(await fetch(
-        ENDPOINT, { headers }
+        ENDPOINT, header
       ))
     } catch (error) {
       return getErrorResponse(error)

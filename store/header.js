@@ -15,8 +15,9 @@ export const mutations = {
           message: response.statusText
         }
       })
+    } else {
+      state = response.json
+      console.log(state)
     }
-
-    state = response.json
   }
 }
