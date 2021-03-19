@@ -1,4 +1,5 @@
-const ENDPOINT = 'http://myresources.local/wp-json/better-rest-endpoints/v1/'
+const RESTLINK = 'http://myresources.local/wp-json/'
+const ENDPOINT = RESTLINK + 'better-rest-endpoints/v1/'
 
 export default function (context, inject) {
   const header = {
