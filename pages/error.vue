@@ -13,8 +13,8 @@ export default {
   data () {
     return {
       error: {
-        statusCode: '',
-        message: ''
+        statusCode: '???',
+        message: 'Unknow error'
       }
     }
   },
@@ -24,7 +24,7 @@ export default {
     }
   },
   created () {
-    this.$data.error = this.$route.params
+    this.$data.error = Object.assign(this.$data.error, this.$route.params)
   }
 }
 </script>
