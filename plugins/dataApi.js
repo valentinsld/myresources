@@ -16,7 +16,7 @@ export default function (context, inject) {
   async function getPage (slug) {
     try {
       return unWrap(await fetch(
-        ENDPOINT + slug, header
+        ENDPOINT + 'page/' + slug, header
       ))
     } catch (error) {
       return getErrorResponse(error)
