@@ -1,8 +1,15 @@
 <template>
   <footer>
-    <p v-for="(link, index) in links" :key="index">
-      {{ link.title }}
-    </p>
+    <ul>
+      <li v-for="(link, index) in links" :key="index">
+        <NuxtLink v-if="link.path" :to="link.path">
+          {{ link.title }}
+        </NuxtLink>
+        <a v-else :href="link.url">
+          {{ link.title }}
+        </a>
+      </li>
+    </ul>
   </footer>
 </template>
 
