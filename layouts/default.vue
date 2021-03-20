@@ -10,8 +10,8 @@
 export default {
   name: 'Default',
   beforeCreate () {
-    this.$store.commit('header/getData')
-    this.$store.commit('footer/getData')
+    this.$store.dispatch('header/getData')
+    this.$store.dispatch('footer/getData')
   }
 }
 </script>

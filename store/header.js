@@ -3,7 +3,14 @@ export const state = () => ({
 })
 
 export const mutations = {
-  async getData (state) {
+  setData (state, links) {
+    state.links = links
+    // console.log('LINKS !!!', state.links)
+  }
+}
+
+export const actions = {
+  async getData ({ commit }) {
     const response = await this.$dataApi.getHeader()
 
     if (!response.ok) {
@@ -19,8 +26,7 @@ export const mutations = {
         }
       })
     } else {
-      state.links = response.json
-      // console.log('LINKS !!!', state.links)
+      commit('setData', response.json)
     }
   }
 }
