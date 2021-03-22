@@ -8,20 +8,14 @@ export default function (context, inject) {
   }
 
   inject('dataApi', {
-    getPage,
     getHeader,
-    getFooter
+    getFooter,
+    getPage,
+    getCategories,
+    getAllResources,
+    getResourcesByCategorie,
+    getResourceBySlug
   })
-
-  async function getPage (slug) {
-    try {
-      return unWrap(await fetch(
-        ENDPOINT + 'page/' + slug, header
-      ))
-    } catch (error) {
-      return getErrorResponse(error)
-    }
-  }
 
   async function getHeader () {
     try {
@@ -43,6 +37,59 @@ export default function (context, inject) {
     }
   }
 
+  async function getPage (slug) {
+    try {
+      return unWrap(await fetch(
+        ENDPOINT + 'page/' + slug, header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  async function getCategories () {
+    try {
+      return unWrap(await fetch(
+        RESTLINK + 'wp/v2/res_categories?per_page=30', header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  async function getAllResources () {
+    try {
+      return unWrap(await fetch(
+        ENDPOINT + 'resources/?per_page=250', header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  async function getResourcesByCategorie (categorie) {
+    try {
+      return unWrap(await fetch(
+        ENDPOINT + 'categories/' + categorie, header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  async function getResourceBySlug (slug) {
+    try {
+      return unWrap(await fetch(
+        ENDPOINT + 'resources/' + slug, header
+      ))
+    } catch (error) {
+      return getErrorResponse(error)
+    }
+  }
+
+  //
+  // HELP
+  //
   async function unWrap (response) {
     const json = await response.json()
     const { ok, status, statusText } = response

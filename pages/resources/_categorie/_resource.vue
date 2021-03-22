@@ -4,9 +4,7 @@
 
 <script>
 export default {
-  name: 'Home',
-  beforeCreate () {
-    this.$router.push('/resources')
-  }
+  name: 'ResourcesPage',
+  layout: 'resourceLayout'
 }
 </script>

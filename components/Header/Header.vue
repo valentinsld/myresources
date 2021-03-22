@@ -20,6 +20,9 @@ export default {
     links () {
       return { ...this.$store.state.header.links }
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('header/getData')
   }
 }
 </script>

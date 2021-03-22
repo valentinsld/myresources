@@ -1,13 +1,12 @@
 <template>
   <div>
-    <Header />
-    <Nuxt />
-    <Footer />
+    <h1>Resources</h1>
+    <AsideCategorie />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Default'
+  name: 'Resources'
 }
 </script>

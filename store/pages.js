@@ -5,12 +5,15 @@ export const state = () => ({
 export const mutations = {
   setData (state, { slug, data }) {
     state[slug] = data
-    console.log(slug, data)
   }
 }
 
 export const actions = {
-  async getPage ({ commit }, slug) {
+  async getPage ({ commit, state }, slug) {
+    if (state[slug]) {
+      return
+    }
+
     const response = await this.$dataApi.getPage(slug)
 
     if (!response.ok) {

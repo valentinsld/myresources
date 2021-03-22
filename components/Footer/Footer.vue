@@ -20,6 +20,9 @@ export default {
     links () {
       return this.$store.state.footer.links
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('footer/getData')
   }
 }
 </script>
