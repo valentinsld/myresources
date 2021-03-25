@@ -17,7 +17,9 @@ export const actions = {
       return
     }
 
+    this.$loading?.start()
     const response = await this.$dataApi.getCategories()
+    this.$loading?.finish()
 
     if (!response.ok) {
       // eslint-disable-next-line
@@ -45,11 +47,17 @@ export const actions = {
 
   // Resources
   async getResourcesByCategorie ({ commit, state }, categorie) {
+    console.log(state.categories, !(categorie in state.categories))
+    if (!(categorie in state.categories)) {
+      await wait1second()
+    }
     if (!isEmpty(state.categories[categorie].resources)) {
       return
     }
 
+    this.$loading?.start()
     const response = await this.$dataApi.getResourcesByCategorie(categorie)
+    this.$loading?.finish()
     // response = await this.$dataApi.getResourceBySlug(slug)
 
     if (!response.ok) {
@@ -78,4 +86,12 @@ export const actions = {
 
 function isEmpty (obj) {
   return obj && Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
+function wait1second () {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('resolved')
+    }, 1000)
+  })
 }

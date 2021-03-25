@@ -1,5 +1,6 @@
 export const state = () => ({
-  about: null
+  about: null,
+  soon: null
 })
 
 export const mutations = {
@@ -14,7 +15,9 @@ export const actions = {
       return
     }
 
+    this.$loading?.start()
     const response = await this.$dataApi.getPage(slug)
+    this.$loading?.finish()
 
     if (!response.ok) {
       // eslint-disable-next-line

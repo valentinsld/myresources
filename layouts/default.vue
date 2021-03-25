@@ -8,6 +8,11 @@
 
 <script>
 export default {
-  name: 'Default'
+  name: 'Default',
+  beforeCreate () {
+    this.$nextTick(() => {
+      this.$nuxt.$store.$loading = this.$nuxt.$loading
+    })
+  }
 }
 </script>
