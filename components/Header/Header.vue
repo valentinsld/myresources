@@ -5,7 +5,7 @@
         <NuxtLink v-if="link.path" :to="link.path">
           {{ link.title }}
         </NuxtLink>
-        <a v-else :href="link.url">
+        <a v-else target="_blank" :href="link.url">
           {{ link.title }}
         </a>
       </li>
