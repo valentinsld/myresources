@@ -47,10 +47,16 @@ export const actions = {
 
   // Resources
   async getResourcesByCategorie ({ commit, state }, categorie) {
-    console.log(state.categories, !(categorie in state.categories))
+    // if categories not load
     if (!(categorie in state.categories)) {
       await wait1second()
     }
+    // if categorie exist
+    if (!state.categories[categorie]) {
+      this.$router.push('/resources')
+      return
+    }
+    // if ressources loaded
     if (!isEmpty(state.categories[categorie].resources)) {
       return
     }
